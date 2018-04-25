@@ -14,11 +14,12 @@ public class time_random_color : MonoBehaviour {
 	public static Text g;
 	public static Text p;
 	public static Text b;
+	public Text rou;
 	public static float time_game = 120f;
 	public static float round;
 	public static int[] values;
 
-	void Start () {
+	void Start () { 
 		round = 20f;
 	}
 
@@ -40,9 +41,9 @@ public class time_random_color : MonoBehaviour {
 	void Update () {
 		time_game -= Time.deltaTime;
 		if (time_game > 0) {
-			time.text = "Time : " + (int  )time_game;
+			time.text = "Time : " + (int)time_game;
 			round -= Time.deltaTime;
-			r.text = "Round : " + (int)round;
+			rou.text = "Round : " + (int)round;
 			if (round < 0) {
 				random_num_func();
 				round = 20f;

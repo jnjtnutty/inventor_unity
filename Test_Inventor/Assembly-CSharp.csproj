@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Color\check_color.cs" />
+     <Compile Include="Assets\Color\color_test.cs" />
      <Compile Include="Assets\Color\random_color.cs" />
      <Compile Include="Assets\Color\serial_test.cs" />
      <Compile Include="Assets\Color\time_random_color.cs" />

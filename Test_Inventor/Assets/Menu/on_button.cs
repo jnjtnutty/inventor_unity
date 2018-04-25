@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class on_button : MonoBehaviour,IPointerClickHandler {
+public class on_button : MonoBehaviour {
 
 	// Use this for initialization
 	//public string scene;
@@ -22,14 +22,15 @@ public class on_button : MonoBehaviour,IPointerClickHandler {
 	}
 	void Update()
 	{
-		/*if (stream_open.stream.ReadLine == "A") {
+		string input = stream_open.stream.ReadLine ();
+		if (input == "A") {
 			OnPointerClick ();
 			mode.name = "A";
 		}
-		else if (stream_open.stream.Readline == "B") {
+		else if (input == "B") {
 			OnPointerClick ();
 			mode.name = "B";
-		}*/
+		}
 		if(count_a >= 7)
 		{
 			SceneManager.LoadScene("color");
@@ -52,7 +53,7 @@ public class on_button : MonoBehaviour,IPointerClickHandler {
 	
 	}
 
-	public void OnPointerClick(PointerEventData pointerEventData)
+	public void OnPointerClick()
 	{
 		if (currentAmount < 100) {
 			currentAmount += speed * Time.deltaTime;
