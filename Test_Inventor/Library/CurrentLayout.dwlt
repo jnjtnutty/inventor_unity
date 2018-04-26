@@ -66,10 +66,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 887, y: 492}
-  m_MaxSize: {x: 16012, y: 14042}
+  m_MinSize: {x: 883, y: 321}
+  m_MaxSize: {x: 16008, y: 8021}
   vertical: 1
-  controlID: 98
+  controlID: 21
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -90,10 +90,10 @@ MonoBehaviour:
     y: 0
     width: 1366
     height: 635
-  m_MinSize: {x: 887, y: 492}
-  m_MaxSize: {x: 16012, y: 14042}
+  m_MinSize: {x: 883, y: 321}
+  m_MaxSize: {x: 16008, y: 8021}
   vertical: 0
-  controlID: 99
+  controlID: 22
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,15 +162,15 @@ MonoBehaviour:
     y: 354
     width: 1089
     height: 281
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 15}
   - {fileID: 20}
   - {fileID: 14}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -255,10 +255,10 @@ MonoBehaviour:
     y: 0
     width: 1089
     height: 635
-  m_MinSize: {x: 610, y: 492}
-  m_MaxSize: {x: 12010, y: 14042}
+  m_MinSize: {x: 606, y: 321}
+  m_MaxSize: {x: 12006, y: 8021}
   vertical: 1
-  controlID: 100
+  controlID: 23
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -280,10 +280,10 @@ MonoBehaviour:
     y: 0
     width: 1089
     height: 354
-  m_MinSize: {x: 610, y: 221}
-  m_MaxSize: {x: 12010, y: 4021}
+  m_MinSize: {x: 606, y: 221}
+  m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 76
+  controlID: 24
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -372,19 +372,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Menu
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Menu
   m_LastFoldersGridSize: -1
   m_LastProjectPath: B:\FRA262_Inventor\Unity\Test_Inventor
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ce240000
-    m_LastClickedID: 9422
-    m_ExpandedIDs: 00000000ce2400003626000052260000ee260000b8270000e6270000ee2700002a2900002c2900002e29000030290000322900003429000036290000382900003a29000000ca9a3bffffff7f
+    m_SelectedIDs: bc270000
+    m_LastClickedID: 10172
+    m_ExpandedIDs: 00000000ce2400003626000052260000ee260000b8270000e6270000ee2700002e29000030290000322900003429000036290000382900003a2900003c2900003e290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +412,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ce2400003626000052260000ee260000b8270000e6270000ee2700002a2900002c2900002e29000030290000322900003429000036290000382900003a290000
+    m_ExpandedIDs: 00000000ce2400003626000052260000ee260000b8270000e6270000ee2700002e29000030290000322900003429000036290000382900003a2900003c2900003e290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300006a260000b62a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -528,9 +528,9 @@ MonoBehaviour:
     height: 333
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f2050000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: e8fbffff00000000e6280000
+    m_ExpandedIDs: e8fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -549,7 +549,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - color
+  - menu
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
