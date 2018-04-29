@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.IO.Ports;
+using System;
 
 public class on_button : MonoBehaviour ,IPointerClickHandler{
 
@@ -51,7 +52,7 @@ public class on_button : MonoBehaviour ,IPointerClickHandler{
 					Debug.Log (value);
 					SceneManager.LoadScene ("word");
 				}*/
-			} catch (System.Exception) {
+			} catch (TimeoutException) {
 				throw;
 			}
 		}

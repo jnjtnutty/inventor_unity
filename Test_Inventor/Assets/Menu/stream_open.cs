@@ -3,46 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 using UnityEngine.SceneManagement;
+using System;
 
 
 
 public class stream_open : MonoBehaviour {
 	public static SerialPort stream = new SerialPort("COM4", 15200);
+
 	// Use this for initialization
 	void Start () {
 		stream.Open ();
-		//stream.ReadTimeout = 1;
-		if (stream.IsOpen) {
-			print ("yeah");
-			readserial_menu ();
-		}
+		stream.ReadTimeout = 50;
+
 	}
 
 
 	
 	// Update is called once per frame
 	void Update () {
+		//StartCoroutine(AsyncReadFromArduino((string s) => Debug.Log(s), () => Debug.LogError("Error"), 10000f));
+	}
+
+	public IEnumerator AsyncReadFromArduino(Action<string> callback, Action fail = null, float timeout = float.PositiveInfinity){
+		DateTime initialTime = DateTime.Now;
+		DateTime nowTime;
+		TimeSpan diff = default(TimeSpan);
+		//int count_a;
+		//int count_b;
+
+		string dataString = null;
+
+		do{
+			try{
+				dataString = stream.ReadLine();
+				if (dataString == "A") {
+					//count_a+=1;
+					stream_open.stream.Write ("colors");
+					SceneManager.LoadScene ("color");
+				}
+				else if(dataString == "B"){
+					//count_b+=1;
+					stream_open.stream.Write ("words");
+					SceneManager.LoadScene ("word");
+				}
+			}
+			catch(TimeoutException){
+				dataString = null;
+			}
+
+			if(dataString != null){
+				callback(dataString);
+				yield return null;
+			}else
+			{
+				yield return new WaitForSeconds(0.05F);
+				nowTime = DateTime.Now;
+				diff = nowTime - initialTime;
+  			}
+			}while (diff.Milliseconds < timeout);
+
+			if(fail != null){
+				fail();
+				yield return null;
+			}
 
 
 	}
-	public void readserial_menu()
-	{
-		while (true) {
-			string input = stream.ReadLine(); 
-			if (input == "A") {
-				print (input);
-				stream.Write ("colors");
-				SceneManager.LoadScene ("color");
-				stream.Close ();
-				break;
-			} else if (input == "B") {
-				print (input);
-				stream.Write ("words");
-				SceneManager.LoadScene ("word");
-				stream.Close ();
-				break;
-
-			}
-		}
+	public void WriteToArduino(string message){
+		stream.WriteLine(message);
+		stream.BaseStream.Flush();
 	}
 }
+
