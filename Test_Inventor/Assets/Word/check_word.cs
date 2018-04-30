@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class check_word : MonoBehaviour {
 
 	// Use this for initialization
-	public static int score_w = 0;
-	int q1,q2,q3,q4 =0; 
+//	public static int score_w = 0;
+//	int q1,q2,q3,q4 =0; 
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		string text1 = random_word.text1.ToString();
+		/*string text1 = random_word.text1.ToString();
 		string text2 = random_word.text2.ToString();
 		string text3 = random_word.text3.ToString();
 		string text4 = random_word.text4.ToString();
@@ -40,7 +40,7 @@ public class check_word : MonoBehaviour {
 			} else if (input == text4.ToLower ()) {
 				q4 -= 1;
 			}
-			/*
+
 			switch (input) {
 			case(text1):
 				q1 += 1;
@@ -66,7 +66,7 @@ public class check_word : MonoBehaviour {
 			case(text4.ToLower()):
 				q4 -= 1;
 				break;
-			}*/
+			}
 
 			if(q1 == 1 && q2 == 1 && q3 == 1 && q4 == 1){
 				break;
@@ -81,6 +81,6 @@ public class check_word : MonoBehaviour {
 			q2 = 0;
 			q3 = 0;
 			q4 = 0;
-		}
+		}*/
 	}
 }

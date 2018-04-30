@@ -8,7 +8,7 @@ using System;
 
 
 public class stream_open : MonoBehaviour {
-	public static SerialPort stream = new SerialPort("COM4", 15200);
+	public static SerialPort stream = new SerialPort("COM3", 9600);
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class stream_open : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//StartCoroutine(AsyncReadFromArduino((string s) => Debug.Log(s), () => Debug.LogError("Error"), 10000f));
+		StartCoroutine(AsyncReadFromArduino((string s) => Debug.Log(s), () => Debug.LogError("Error"), 10000f));
 	}
 
 	public IEnumerator AsyncReadFromArduino(Action<string> callback, Action fail = null, float timeout = float.PositiveInfinity){
@@ -36,15 +36,19 @@ public class stream_open : MonoBehaviour {
 		do{
 			try{
 				dataString = stream.ReadLine();
+				Debug.Log(dataString);
 				if (dataString == "A") {
 					//count_a+=1;
-					stream_open.stream.Write ("colors");
+					stream.Write ("colors");
 					SceneManager.LoadScene ("color");
+					stream.Close();
 				}
 				else if(dataString == "B"){
 					//count_b+=1;
-					stream_open.stream.Write ("words");
+					stream.Write ("words");
+					stream.Close();
 					SceneManager.LoadScene ("word");
+
 				}
 			}
 			catch(TimeoutException){

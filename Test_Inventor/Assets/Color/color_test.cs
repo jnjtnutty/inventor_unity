@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+
 
 public class color_test : MonoBehaviour {
 
@@ -38,7 +40,75 @@ public class color_test : MonoBehaviour {
 				for (int i = 0; i <= 3; i++) {
 					values [i] = 0;
 				}
-			} else {
+			} 
+			else {
+				StartCoroutine(AsyncReadFromArduino((string s) => Debug.Log(s), () => Debug.LogError("Error"), 10000f));
+			/*	int red = values [0];
+				int green = values [1];
+				int pink = values [2];
+				int blue = values [3];
+				print ("0:" + values [0] + " 1:" + values [1] + " 2:" + values [2] + " 3:" + values [3]);
+				while (values [0] != 0 && values [1] != 0 && values [2] != 0 && values [3] != 0) {
+					string input = stream_open.stream.ReadLine ();
+					print (input);
+					switch (input) {
+					case("R"):
+						red -= 1;
+						break;
+					case("r"):
+						red += 1;
+						break;
+					case("G"):
+						green -= 1;
+						break;
+					case("g"):
+						green += 1;
+						break;
+					case("P"):
+						pink -= 1;
+						break;
+					case("p"):
+						pink += 1;
+						break;
+					case("B"):
+						blue -= 1;
+						break;
+					case("b"):
+						blue += 1;
+						break;
+					}
+					print ("red: " + red + " green: " + green + " blue: " + blue + " pink: " + pink);
+					if (red == 0 && green == 0 && blue == 0 && pink == 0) {
+						break;
+					}
+				}
+				if (red == 0 && green == 0 && blue == 0 && pink == 0) {
+					score_c += 1;
+					random_num_func ();
+					round_game = 20;
+				}*/
+			}
+		}
+		else {
+			time.text = "time up";
+			stream_open.stream.Write ("exit");
+			SceneManager.LoadScene("score_color");
+		}
+	}
+
+	public IEnumerator AsyncReadFromArduino(Action<string> callback, Action fail = null, float timeout = float.PositiveInfinity){
+		DateTime initialTime = DateTime.Now;
+		DateTime nowTime;
+		TimeSpan diff = default(TimeSpan);
+		//int count_a;
+		//int count_b;
+
+		string dataString = null;
+
+		do{
+			try{
+				dataString = stream_open.stream.ReadLine();
+				Debug.Log(dataString);
 				int red = values [0];
 				int green = values [1];
 				int pink = values [2];
@@ -84,20 +154,34 @@ public class color_test : MonoBehaviour {
 					round_game = 20;
 				}
 			}
-		}
-		else {
-			time.text = "time up";
-			stream_open.stream.Write ("exit");
-			SceneManager.LoadScene("score_color");
+			catch(TimeoutException){
+				dataString = null;
+			}
+
+			if(dataString != null){
+				callback(dataString);
+				yield return null;
+			}else
+			{
+				yield return new WaitForSeconds(0.05F);
+				nowTime = DateTime.Now;
+				diff = nowTime - initialTime;
+			}
+		}while (diff.Milliseconds < timeout);
+
+		if(fail != null){
+			fail();
+			yield return null;
 		}
 	}
+
 
 	public void  random_num_func()
 	{
 		values = new int[4];
 		while (values [0] + values [1] + values [2] + values [3] != 8) {
 			for (int i = 0; i <= 3; i++) {
-				values [i] = Random.Range (1, 5);
+				values [i] = UnityEngine.Random.Range (1, 5);
 			}
 		}
 		r.text = values [0].ToString();
