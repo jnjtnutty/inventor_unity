@@ -39,13 +39,15 @@ public class stream_open : MonoBehaviour {
 				Debug.Log(dataString);
 				if (dataString == "A") {
 					//count_a+=1;
-					stream.Write ("colors");
-					SceneManager.LoadScene ("color");
+					stream.Write ("colors\n\r");
+					stream.Write("next");
 					stream.Close();
+					SceneManager.LoadScene ("color");
 				}
 				else if(dataString == "B"){
 					//count_b+=1;
 					stream.Write ("words");
+					stream.Write("next");
 					stream.Close();
 					SceneManager.LoadScene ("word");
 

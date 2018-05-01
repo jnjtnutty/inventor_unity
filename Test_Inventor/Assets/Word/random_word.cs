@@ -24,7 +24,8 @@ public class random_word : MonoBehaviour {
 
 	// Update is called once per frame
 	void Start(){
-		
+		random_word_func ();
+		stream_open.stream.Open ();
 
 	}
 	public void random_word_func(){
@@ -34,6 +35,7 @@ public class random_word : MonoBehaviour {
 		text2.text = dialog [1].ToString();
 		text3.text = dialog [2].ToString();
 		text4.text = dialog [3].ToString();
+		//stream_open.stream.Write ("next");
 		print (dialog);
 	}
 	public void Update () {
@@ -46,12 +48,7 @@ public class random_word : MonoBehaviour {
 				random_word_func ();
 				round = 20f;
 			} else {
-				while (q1 == 0 || q2 == 0 || q3 == 0 || q4 == 0) {
-					StartCoroutine (AsyncReadFromArduino ((string s) => Debug.Log (s), () => Debug.LogError ("Error"), 10000f));
-					if (q1 == 1 && q2 == 1 && q3 == 1 && q4 == 1) {
-						break;
-					}
-				}
+				StartCoroutine (AsyncReadFromArduino ((string s) => Debug.Log (s), () => Debug.LogError ("Error"), 10000f));
 				if (q1 == 1 && q2 == 1 && q3 == 1 && q4 == 1) {
 					score_w += 1;
 					random_word_func ();
